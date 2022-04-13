@@ -2,21 +2,24 @@
 
 4월 13일 6주차 
 =============
-1.Firebase 인증 설정
+1.Firebase 버전 다운 그레이드
+`$ npm i firebase@8.8.0`
 
-2.Email,Google,Github 로그인 설정
+2.Firebase 인증 설정
 
-3.로그인 폼 구조 생성
+3.Email,Google,Github 로그인 설정
 
-4.로그인 폼 상태 업데이트 가능하게 만듦
+4.로그인 폼 구조 생성
 
-4-1 콘솔로그를 통해 intput에서 입력을 시도하고있는지 확인 
+5.로그인 폼 상태 업데이트 가능하게 만듦
+
+5-1 콘솔로그를 통해 intput에서 입력을 시도하고있는지 확인 
 ```
 {
     console.log(event.target.name)
 }
 ```
-5.onSubmit 함수에서 로그인과 회원가입 분기시키기
+6.onSubmit 함수에서 로그인과 회원가입 분기시키기
 
 4월 6일 5주차 
 =============
