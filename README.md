@@ -1,5 +1,47 @@
 #602277101 곽인섭
 
+4월 27일 8주차
+=============
+1.파이어 베이스로 고르인과 회원가입 처리하기
+
+2.Auth.js async
+```
+const onSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    let data;
+    if (newAccount) {
+      // create newAccount
+      data = await authService.createUserWithEmailAndPassword(email, password);
+    } else {
+      // log in
+      data = await authService.signInWithEmailAndPassword(email, password);
+    }
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+3.App.js useEffect 사용하기
+```
+function App() {
+  const [init, setInit] = userState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(user);
+      } else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    });
+  }, []);
+  ```
+  4.로그인,회원가입 토글 버튼 적용
+
+  5. 소셜 로그인 버튼에서 name 속성 사용
 4월 13일 6주차 
 =============
 1.Firebase 버전 다운 그레이드
