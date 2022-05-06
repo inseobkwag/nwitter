@@ -2,18 +2,35 @@
 
 5월 4일 9주차
 =============
-1.cache 삭제하는 법 (필요할시 수행)
+1.cache 삭제하는 법 (필요할시 수행)<br>
 `$ npm cache clean --force`
 
 2.컴포넌트 안에 Navigation.js 파일을 생성
 
-3.루트 안에 Profile.js 파일을 생성
+3.Switch를 이용해 isLoggedIn이 true인 경우에만 Navigation이 보이도록 출력<BR>
+`{isLoggedIn && <Navigation />}`
+  
+4.루트 안에 Profile.js 파일을 생성
+  - Profile.js 파일에서 로그아웃 버튼 생성
 
-4.Home.js 내용 작성
+5.Home.js 내용 작성
 
-5.파이어베이스 데이터 베이스 생성하기(위치는 가장 가까운 곳으로 해야 빠름)
+6.Redirect로 로그아웃 후 주소 이동
 
-6.파이어베이스 데이터베이스는 NoSQL기반 데이터베이스이다.
+7.useHistory를 이용하여 로그아웃을 처리하는 자바스크립트 코드로 주소 이동
+```
+  import { useHistory } from 'react-router-dom';
+  ...
+  const histoy = useHistory();
+  const onLogOutClick = () => {
+    authService.signOut();
+    histoy.push("/");
+  };
+
+```
+8.파이어베이스 데이터 베이스 생성하기<br>(위치는 가장 가까운 곳으로 해야 빠름)
+
+9.파이어베이스 데이터베이스는 NoSQL기반 데이터베이스이다.
 
 4월 27일 8주차
 =============
