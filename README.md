@@ -1,5 +1,36 @@
 #602277101 곽인섭
 
+5월 11일 10주차
+=============
+1.클라우드 Firestore에서 컬렉션이 잘 가져오는지 확인
+  - 컬렉션에서 각 항목을 통해 조회나 수정 삭제가 가능한지 확인
+
+2.리액트에서 db를 사용해보기
+* fbase에 firestore import시켜주기
+
+3.Firestore에서 데이터 저장하기
+  ```
+  await dbService.collection("nweets").add({
+            text:nweet,
+            createdAt:Date.now(),
+        });
+        setNweet("");
+    };
+
+  ```
+
+4.Firestore에서 문서를 읽어오는지 확인<br>
+  
+   ``` 
+  const getNweets=async()=>{
+        const dbNweets=await dbService.collection("nweets").get();
+        dbNweets.forEach((document)=> console.log(document.data()));
+    };
+  ```
+  * forEach 함수를 사용해 여러 개의 문서 스냅샷을 순회
+
+5.받은 데이터로 게시물 목록 만들어보기
+
 5월 4일 9주차
 =============
 1.cache 삭제하는 법 (필요할시 수행)<br>
