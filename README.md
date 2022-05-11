@@ -31,6 +31,14 @@
 
 5.받은 데이터로 게시물 목록 만들어보기
 
+6.트윗 아이디 저장
+* 문서에는 id속성이 있는데 스냅샷을 순회하면서 document.id를 얻자
+  ```
+  const nweetObject = {...document.data(), id:document.id};
+            setNweets((prev)=>[nweetObject, ...prev])
+        });
+  ```
+
 5월 4일 9주차
 =============
 1.cache 삭제하는 법 (필요할시 수행)<br>
