@@ -1,4 +1,44 @@
 #602277101 곽인섭
+참고:github.com/easysIT/Nwitter
+
+5월 18일 11주차
+=============
+1.트윗 목록 출력해보기
+  * map함수는 배열을 순회하기위한 ES6함수이다.
+  ```
+  {nweets.map((nweet)=>(
+                    <div key={nweet.id}>
+                        <h4>{nweet.text}</h4>
+                        </div>
+  ```
+2.누가쓴 트윗인지 알아보자
+* authService.onAuthStateChanged함수를 사용해 정보를 받아온다.
+* useState를 추가해 usreObj를 만들고 AppRouter컴포넌트에 userObj를 보내준다.<br>이제 필요한 컴포넌트로 userObj정보를 뿌려준다.
+* 프롭스는 여러 컴포넌트를 거치지 않도록 하는게 유지보수에 용이하다.
+* Home컴포넌트에서 프롭스를받고 userObj.id(고유값 Uid)를 저장하는 로직을 추가
+* 파이어스토어에 잘저장되고 확인되는지 확인해본다.
+
+3.실시간 DB로 트윗목록 보여주기
+- getNweets함수 삭제
+- onSnapshot함수 적용
+```
+dbService.collection("nweets").onSnapshot((Snapshot)=>{
+  const newArray=Snapshot.docs.map((document)=>({
+    id:document.id,
+     ...document.data(),
+  }));
+  setNweets(newArray);
+       });
+```
+
+4.트윗 삭제 기능 만들기
+* 트윗 컴포넌트 분리
+* 수정,삭제버튼추가
+* 내가쓴 트윗 나만 삭제,수정되도록 만듦
+* firestore uid바꾸기
+* 버튼에 삭제기능 추가
+
+
 
 5월 11일 10주차
 =============
