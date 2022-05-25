@@ -2,6 +2,53 @@
 
 참고:github.com/easysIT/Nwitter
 
+5월 25일 12주차
+=============
+1.바로 전 주차에서 했던 삭제기능과 유사하게 수정기능도 만들어보자
+* 수정기능을 위한 useState를 추가
+* editing에 따라 토글 상태를 관리
+* 입력란에 onChange작업
+```
+const onChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setNewNweet(value);
+  };
+```
+
+* 파이어스토어에 새 입력값 반영
+```
+const onSubmit = async (event) => {
+    event.preventDefault();
+    await dbService.doc(`nweets/${nweetObj.id}`).update({ text: newNweet });
+    setEditing(false);
+  };
+```
+
+2.사진 미리보기 기능 만들기
+* 파일 첨부 양식 만들기(설정한것만 선택가능)
+`accept="image/*`를 활용<br>text,png,heic,jpg등 다양하게 활용가능
+
+* 첨부파일 정보 출력
+* 웹 브라우저에 사진 출력
+`FileReader`를 이용, `readAsDataURL`함수를 이용해 파일정보를 인자로 받아 파일위치를 URL로 반환해줌
+* 사진 미리보기 구현
+`const [attachment, setAttachment] = useState("");`
+```
+ const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setAttachment(result);
+    };
+```
+* attachment가 있는경우 img 엘리먼트를 출력
+`{attachment && <img src={attachment} width="50px" height="50px" />}`
+* 파일 선택 취소 버튼 생성
+onClearAttachment함수를 이용
+`const onClearAttachment = () => setAttachment("");`
+`<button onClick={onClearAttachment}>Clear</button>`
+
 5월 18일 11주차
 =============
 1.트윗 목록 출력해보기
