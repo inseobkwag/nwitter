@@ -1,6 +1,40 @@
 #602277101 곽인섭
 
 참고:github.com/easysIT/Nwitter
+react api연동 오류날때 참고할만한 사이트:netlify.app
+
+6월 8일 13주차
+=============
+1.사진 저장 기능 만들기
+* firebse storage 임포트
+* 고유 식별자를 만들어주는 UUID 라이브러리 설치
+```
+npm install uuid
+```
+* UUID 임포트
+* 스토리지에 사진 저장<br>
+  제공함수 putString사용<br>
+  불러오기<br>
+  response.ref.getDownloadURL 함수를 사용
+* 사진을 포함한 결과를 출력하고 코드를 다듬는다
+* 트윗 삭제시 사진을 스토리지에서 삭제<br>
+refFromURL함수를 사용하면 attachmentUrl만으로도 스토리지에서 삭제가능
+- alt=읽은값 그대로 
+- 임시의 아이디=uuid
+
+2.내가 쓴 트윗만 보기
+* 파일 정리하기
+* 트윗 필터링 기능 구현
+* 정렬 쿼리 사용하기
+* 필터링 기능 잘 동작하는지 확인
+
+
+
+요즘은 var 잘 안씀, 변수:let 상수:const
+
+
+
+
 
 5월 25일 12주차
 =============
