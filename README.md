@@ -49,6 +49,15 @@ const user = authService.currentUser;
       updateProfile: (args) => user.updateProfile(args),
     });
 ```
+3.코드 깔끔하게 정리하기
+* Home컴포넌트 나누고 정리
+- NweetFactory.js만들고 Home.js의 form영역을 삭제후 NweetFactory컴포넌트를 Home컴포넌트에 포함
+* Auth컴포넌트 나누고 정리
+- AuthForm.js만들고 Auth컴포넌트에 있는 form,span,관련함수를 옮긴후 Auth컴포넌트에 AuthForm을 포함
+4.로그아웃 버그 고치기
+* else로직에 userObj를 비워줄 함수 추가
+- AppRouter컴포넌트는 isLoggedIn프롭스가 Boolean(userObj)에 의해 true나 false로 정해짐
+
 
 6월 8일 13주차
 =============
