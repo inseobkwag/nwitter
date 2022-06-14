@@ -1,7 +1,54 @@
 #602277101 곽인섭
 
-참고:github.com/easysIT/Nwitter
+참고:github.com/easysIT/Nwitter<br>
 react api연동 오류날때 참고할만한 사이트:netlify.app
+
+6월 14일 14주차
+=============
+1.프로필 페이지 기능 보완
+* Profile컴포넌트 정리<br>
+`getMyNweets함수와 useEffect를 모두 삭제`
+* 내비게이션 이름 넣기<br>
+`My Profile과 같이 Navigation컴포넌트에 보내서 출력에 이용` `userObj이용`
+* 프로필 업데이트 기능 추가
+```
+     <form>
+        <input type="text" placeholder="Display name"/>
+        <input type="submit" value="Update Profile"/>
+      </form>
+```
+`newDisplayName의 기본값은 userObj.displayName으로 지정 후 input엘리먼트에 새값을 입력하면 newDisplayName이 바뀌도록해야함`
+* userObj 문서롤 이용해 프로필 업데이트
+```
+ if (userObj.displayName !== newDisplayName) {
+      await userObj.updateProfile({ displayName: newDisplayName });
+      refreshUser();
+    }
+```
+2.프로필 실시간 업데이트
+* Navigation컴포넌트 살펴보기<br>
+`컴포넌트를 리렌더링시켜서 실시간업데이트하기`
+* refreshUser함수 추가<br>
+`const refreshUser = () => {setUserObj(authService.currentUser)};`
+* refreshUser함수 Profile 컴포넌트로 보내기
+- AppRouter,Profile컴포넌트 순서로 함수를 프롭스를 통해 내려보내주자
+* userObj크기 줄이기
+```{
+      uid: user.uid,
+      displayName: user.displayName,
+      updateProfile: (args) => user.updateProfile(args),
+    }
+```
+* isLoggedIn크기 줄이기
+- Boolean함수를 이용해 고쳐보자
+```
+const user = authService.currentUser;
+    setUserObj({
+      uid: user.uid,
+      displayName: user.displayName,
+      updateProfile: (args) => user.updateProfile(args),
+    });
+```
 
 6월 8일 13주차
 =============
@@ -17,6 +64,20 @@ npm install uuid
   불러오기<br>
   response.ref.getDownloadURL 함수를 사용
 * 사진을 포함한 결과를 출력하고 코드를 다듬는다
+```
+ const onSubmit = async (event) => {
+    event.preventDefault();
+    let attachmentUrl = "";
+    if (attachment !== "") {
+      const attachmentRef = storageService
+        .ref()
+        .child(`${userObj.uid}/${uuidv4()}`);
+      const response = await attachmentRef.putString(attachment, "data_url");
+      attachmentUrl = await response.ref.getDownloadURL();
+    }
+    setNweet("");
+    setAttachment("");
+```
 * 트윗 삭제시 사진을 스토리지에서 삭제<br>
 refFromURL함수를 사용하면 attachmentUrl만으로도 스토리지에서 삭제가능
 - alt=읽은값 그대로 
@@ -25,15 +86,10 @@ refFromURL함수를 사용하면 attachmentUrl만으로도 스토리지에서 �
 2.내가 쓴 트윗만 보기
 * 파일 정리하기
 * 트윗 필터링 기능 구현
-* 정렬 쿼리 사용하기
+* 정렬 쿼리 사용하기(정렬기준 필드, 정렬방법 문자열)
+`orderBy함수 사용` `asc는 오름차순,desc는 내림차순`
 * 필터링 기능 잘 동작하는지 확인
-
-
-
 요즘은 var 잘 안씀, 변수:let 상수:const
-
-
-
 
 
 5월 25일 12주차
